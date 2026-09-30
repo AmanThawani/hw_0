@@ -2,8 +2,8 @@ import random
 import sys
 
 def decide(prob):
-    x = random.random()
-    return x < prob
+    r = random.random()
+    return r < prob
 
 if __name__ == "__main__":
     prob = 0.01
