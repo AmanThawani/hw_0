@@ -41,13 +41,13 @@ def time_view(request):
 
 
 def sum_view(request):
-    """Return <p>{"sum": n1 + n2}</p> for /app/sum?n1=...&n2=...
+    """Return <p>n1 + n2</p> for /app/sum?n1=...&n2=...
 
-    The autograder parses the response as HTML and reads the <p> tag.
+    The autograder parses the response as HTML and reads the number in the <p> tag.
     """
     n1 = float(request.GET["n1"])
     n2 = float(request.GET["n2"])
-    return HttpResponse("<p>" + json.dumps({"sum": n1 + n2}) + "</p>")
+    return HttpResponse("<p>" + str(n1 + n2) + "</p>")
 
 
 # ---------------------------------------------------------------------------
