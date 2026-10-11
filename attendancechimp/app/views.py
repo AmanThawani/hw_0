@@ -34,6 +34,18 @@ def index(request):
     return render(request, 'app/index.html', context)
 
 
+def time_view(request):
+    """Return the current Central time as plain text, e.g. "13:24"."""
+    now = datetime.now(CDT)
+    return HttpResponse(now.strftime("%H:%M"))
+
+
+def sum_view(request):
+    """Return {"sum": n1 + n2} for /app/sum?n1=...&n2=..."""
+    n1 = float(request.GET["n1"])
+    n2 = float(request.GET["n2"])
+    return JsonResponse({"sum": n1 + n2})
+
 
 # ---------------------------------------------------------------------------
 # HW4  — user creation
