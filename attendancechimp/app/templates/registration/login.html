@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html><head><title>Login</title></head>
+<html>
+<head>
+    <title>Login</title>
+</head>
 <body style="text-align:center; font-family:Arial;">
-<h1>Log In</h1>
+    <h1>Log In</h1>
 
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </p>
+
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </p>
+
+        <button type="submit">Log In</button>
+    </form>
 </body>
 </html>

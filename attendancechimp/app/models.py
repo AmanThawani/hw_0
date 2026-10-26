@@ -67,9 +67,9 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="student_profile"
     )
-    student_id = models.CharField(max_length=20, unique=True)
-    graduation_year = models.PositiveSmallIntegerField()
-    major = models.CharField(max_length=100)
+    student_id = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    graduation_year = models.PositiveSmallIntegerField(null=True, blank=True)
+    major = models.CharField(max_length=100, blank=True)
     second_major = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
@@ -99,8 +99,8 @@ class InstructorProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="instructor_profile"
     )
-    department = models.CharField(max_length=100)
-    title = models.CharField(max_length=4, choices=Title.choices)
+    department = models.CharField(max_length=100, blank=True)
+    title = models.CharField(max_length=4, choices=Title.choices, blank=True)
 
     def is_ta(self):
         """Return True if this staff member is a teaching assistant."""
